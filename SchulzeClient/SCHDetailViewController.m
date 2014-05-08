@@ -87,7 +87,7 @@
     NSString * escapedVoterName = [[[NSUserDefaults standardUserDefaults] stringForKey:@"Voter"] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLPathAllowedCharacterSet]];
     NSString * escapedElectionName = [_electionName stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLPathAllowedCharacterSet]];
     NSString * urlString = [[NSString alloc] initWithFormat:@"%@/vote?voter=%@&election=%@", server, escapedVoterName, escapedElectionName];
-    NSLog(@"%@", urlString);
+    //NSLog(@"%@", urlString);
     return [NSURL URLWithString:urlString];
 }
 
@@ -121,7 +121,7 @@
 }
 
 - (IBAction)textFieldDidBeginEditing:(UITextField *)textField {
-    NSLog(@"begin editing %ld", (long)textField.tag);
+    //NSLog(@"begin editing %ld", (long)textField.tag);
     
 //  UITableViewCell* cell = (UITableViewCell *) [[[textField superview] superview] superview];
 //
@@ -141,7 +141,6 @@
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    NSLog(@"viewWillAppear");
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -149,7 +148,6 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"didSelectRowAtIndexPath");
     [self.view endEditing:YES];
 }
 
@@ -187,7 +185,6 @@
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
-    NSLog(@"textFieldShouldReturn!");
     [self.view endEditing:YES];
     return YES;
 }
@@ -229,10 +226,10 @@
     
     NSHTTPURLResponse * response = nil;
     NSError * errors = nil;
-    NSData * result = [NSURLConnection sendSynchronousRequest:request
-                                            returningResponse:&response error:&errors];
+    [NSURLConnection sendSynchronousRequest:request
+                          returningResponse:&response error:&errors];
     if (errors != nil) {
-        NSLog(@"%@", [errors localizedDescription]);
+        //NSLog(@"%@", [errors localizedDescription]);
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
                                                         message:@"Cannot reach server."
                                                        delegate:self
@@ -242,8 +239,6 @@
         return NO;
     }
     if (response.statusCode != 200) {
-        NSLog(@"RESULT %@", [[NSString alloc] initWithData:result encoding:NSUTF8StringEncoding]);
-        
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
                                                         message:@"Server rejected vote."
                                                        delegate:self
@@ -253,12 +248,6 @@
         return NO;
     }
     return YES;
-}
-
-- (IBAction)voteButtonClicked:(id)sender {
-    if ([self putVoteToServer]) {
-        NSLog(@"Successfully voted!");
-    }
 }
 
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString* ) indentifier sender:(id)sender {

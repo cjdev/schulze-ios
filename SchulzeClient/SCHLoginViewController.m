@@ -66,7 +66,7 @@
     }
     
     NSDictionary * voterDict = [NSDictionary dictionaryWithObjectsAndKeys:voter, @"name", nil];
-    NSLog(@"%@", voterDict);
+    //NSLog(@"%@", voterDict);
     
     NSError *error = nil;
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:voterDict

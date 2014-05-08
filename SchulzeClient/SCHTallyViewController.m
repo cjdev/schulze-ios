@@ -80,7 +80,7 @@
     NSString * server = [[NSUserDefaults standardUserDefaults] stringForKey:@"Server"];
     NSString * escapedElectionName = [_electionName stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLPathAllowedCharacterSet]];
     NSString * urlString = [[NSString alloc] initWithFormat:@"%@/places/%@", server, escapedElectionName];
-    NSLog(@"%@", urlString);
+    //NSLog(@"%@", urlString);
     
     NSURLRequest * request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]
                                               cachePolicy:NSURLRequestReloadIgnoringCacheData
@@ -109,7 +109,7 @@
         rank++;
     }
     
-    NSLog(@"%@", _places);
+    //NSLog(@"%@", _places);
 }
 
 @end

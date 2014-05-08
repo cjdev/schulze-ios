@@ -66,7 +66,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dqm-xT-6Yh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-585" y="144"/>
+            <point key="canvasLocation" x="-739" y="120"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="cUi-kZ-frf">
@@ -82,7 +82,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eq9-QA-ai8" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-260" y="-634"/>
+            <point key="canvasLocation" x="-432" y="-587"/>
         </scene>
         <!--Master View Controller - Master-->
         <scene sceneID="VgW-fR-Quf">
@@ -125,7 +125,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Cn-md-YlS" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="43" y="144"/>
+            <point key="canvasLocation" x="-151" y="120"/>
         </scene>
         <!--Detail View Controller - Detail-->
         <scene sceneID="Cn3-H9-jdl">
@@ -189,7 +189,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Vote"/>
                                 <connections>
-                                    <action selector="voteButtonClicked:" destination="Ah7-4n-0Wa" eventType="touchUpInside" id="bhv-4c-vlT"/>
                                     <segue destination="Iqr-wg-tXM" kind="push" identifier="showTally" id="pVx-J5-NYd"/>
                                 </connections>
                             </button>
@@ -208,7 +207,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lrm-kH-fPn" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="207" y="-621"/>
+            <point key="canvasLocation" x="139" y="-587"/>
         </scene>
         <!--Tally View Controller - Tally-->
         <scene sceneID="iaL-ru-phT">
@@ -273,7 +272,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FkG-3Y-Rdg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="616" y="-621"/>
+            <point key="canvasLocation" x="456" y="120"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
