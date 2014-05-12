@@ -24,6 +24,8 @@
 		3914919419143C5300B260E7 /* SchulzeClientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3914919319143C5300B260E7 /* SchulzeClientTests.m */; };
 		3914919F1914402A00B260E7 /* SCHLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3914919E1914402A00B260E7 /* SCHLoginViewController.m */; };
 		392192A6191AEB1D0052EB8B /* SCHTallyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 392192A5191AEB1D0052EB8B /* SCHTallyViewController.m */; };
+		3926394119212636008AE5D6 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3926394019212636008AE5D6 /* AdSupport.framework */; };
+		39263947192127F4008AE5D6 /* libcj.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39263946192127F4008AE5D6 /* libcj.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +64,9 @@
 		3914919E1914402A00B260E7 /* SCHLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCHLoginViewController.m; sourceTree = "<group>"; };
 		392192A4191AEB1D0052EB8B /* SCHTallyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCHTallyViewController.h; sourceTree = "<group>"; };
 		392192A5191AEB1D0052EB8B /* SCHTallyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCHTallyViewController.m; sourceTree = "<group>"; };
+		3926394019212636008AE5D6 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		39263945192127F4008AE5D6 /* CJAffiliate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJAffiliate.h; sourceTree = "<group>"; };
+		39263946192127F4008AE5D6 /* libcj.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcj.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +74,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39263947192127F4008AE5D6 /* libcj.a in Frameworks */,
+				3926394119212636008AE5D6 /* AdSupport.framework in Frameworks */,
 				3914916819143C5300B260E7 /* CoreGraphics.framework in Frameworks */,
 				3914916A19143C5300B260E7 /* UIKit.framework in Frameworks */,
 				3914916619143C5300B260E7 /* Foundation.framework in Frameworks */,
@@ -110,6 +117,7 @@
 		3914916419143C5300B260E7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3926394019212636008AE5D6 /* AdSupport.framework */,
 				3914916519143C5300B260E7 /* Foundation.framework */,
 				3914916719143C5300B260E7 /* CoreGraphics.framework */,
 				3914916919143C5300B260E7 /* UIKit.framework */,
@@ -141,6 +149,8 @@
 		3914916C19143C5300B260E7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				39263945192127F4008AE5D6 /* CJAffiliate.h */,
+				39263946192127F4008AE5D6 /* libcj.a */,
 				3914916D19143C5300B260E7 /* SchulzeClient-Info.plist */,
 				3914916E19143C5300B260E7 /* InfoPlist.strings */,
 				3914917119143C5300B260E7 /* main.m */,
@@ -395,9 +405,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SchulzeClient/SchulzeClient-Prefix.pch";
 				INFOPLIST_FILE = "SchulzeClient/SchulzeClient-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/nan/Downloads/cj-ios-tracking-2.0.0_106_b34ee22",
+					2,
+					"$(PROJECT_DIR)/SchulzeClient",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -408,9 +425,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SchulzeClient/SchulzeClient-Prefix.pch";
 				INFOPLIST_FILE = "SchulzeClient/SchulzeClient-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/nan/Downloads/cj-ios-tracking-2.0.0_106_b34ee22",
+					2,
+					"$(PROJECT_DIR)/SchulzeClient",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

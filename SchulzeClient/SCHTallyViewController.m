@@ -1,11 +1,3 @@
-//
-//  SCHTallyViewController.m
-//  SchulzeClient
-//
-//  Created by Team NaN on 5/7/14.
-//  Copyright (c) 2014 Commission Junction. All rights reserved.
-//
-
 #import "SCHTallyViewController.h"
 
 @interface SCHTallyViewController ()

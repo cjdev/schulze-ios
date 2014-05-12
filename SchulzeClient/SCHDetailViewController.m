@@ -1,11 +1,4 @@
-//
-//  SCHDetailViewController.m
-//  SchulzeClient
-//
-//  Created by Team NaN on 5/2/14.
-//  Copyright (c) 2014 Commission Junction. All rights reserved.
-//
-
+#import "CJAffiliate.h"
 #import "SCHDetailViewController.h"
 
 @interface SCHDetailViewController ()
@@ -68,9 +61,6 @@
 {
     [super viewDidLoad];
    	// Do any additional setup after loading the view, typically from a nib.
-//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:[[NSUserDefaults standardUserDefaults] valueForKey:@"Voter" ]
-//                                                                              style:UIBarButtonItemStyleBordered
-//                                                                             target:self action:nil];
     [self getElectionDetails];
     [self configureView];
 }
@@ -117,26 +107,6 @@
     
     // clobber any existing array with new candidate list
     _candidates = [[NSMutableArray alloc] initWithArray:[_candidateVotes allKeys]];
-    
-}
-
-- (IBAction)textFieldDidBeginEditing:(UITextField *)textField {
-    //NSLog(@"begin editing %ld", (long)textField.tag);
-    
-//  UITableViewCell* cell = (UITableViewCell *) [[[textField superview] superview] superview];
-//
-//    [self->table scrollToRowAtIndexPath:[self->table indexPathForCell:cell]
-//                       atScrollPosition:UITableViewScrollPositionMiddle
-//                               animated:YES];
-    
-//    CGPoint origin = textField.frame.origin;
-//    CGPoint point = [textField.superview convertPoint:origin toView:self->table];
-//    float navBarHeight = self.navigationController.navigationBar.frame.size.height;
-//    CGPoint offset = self->table.contentOffset;
-//    // Adjust the below value as you need
-//    offset.y += (point.y - navBarHeight);
-//    NSLog(@"origin:%f p:%f nav:%f offset:%f", origin.y, point.y, navBarHeight, offset.y);
-//    [self->table setContentOffset:offset animated:YES];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -189,15 +159,14 @@
     return YES;
 }
 
-
-
--(NSData*) buildVotesJSONData {
+-(NSArray*) buildVotesJSONStructure {
     NSMutableArray * transformedVotes = [[NSMutableArray alloc] initWithCapacity:[_candidateVotes count]];
     for (id candidate in _candidateVotes) {
         //NSLog(@"candidate: %@ rank: %@", candidate, [_candidateVotes objectForKey:candidate]);
         
-        //convert nulls to empty strings
         NSString * rank = [_candidateVotes objectForKey:candidate];
+        
+        //convert nulls to empty strings
         if (![_candidateVotes objectForKey:candidate]) {
             rank = @"";
         }
@@ -208,21 +177,23 @@
         [transformedVotes addObject:voteDict];
     }
     //NSLog(@"%@", transformedVotes);
-    
-    NSError *error = nil;
-    return [NSJSONSerialization dataWithJSONObject:transformedVotes
-                                           options:NSJSONWritingPrettyPrinted
-                                             error:&error];
+    return transformedVotes;
+
 }
 
 -(BOOL)putVoteToServer {
     NSMutableURLRequest * request = [NSMutableURLRequest requestWithURL:[self getVotingUrl]
                                                             cachePolicy:NSURLRequestReloadIgnoringCacheData
                                                         timeoutInterval:5];
-    
     request.HTTPMethod = @"PUT";
     [request setValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
-    request.HTTPBody = [self buildVotesJSONData];
+    
+    NSArray * votesArray = [self buildVotesJSONStructure];
+    
+    NSError *error = nil;
+    request.HTTPBody = [NSJSONSerialization dataWithJSONObject:votesArray
+                                                       options:NSJSONWritingPrettyPrinted
+                                                         error:&error];
     
     NSHTTPURLResponse * response = nil;
     NSError * errors = nil;
@@ -247,7 +218,27 @@
         [alert show];
         return NO;
     }
+    
+    [self reportVotes:votesArray];
+    
     return YES;
+}
+
+-(void) reportVotes:(NSArray* ) votes {
+    
+    NSMutableArray * voteItems = [NSMutableArray arrayWithCapacity:votes.count];
+    for (NSDictionary* vote in votes) {
+        CJAFItem* item = [CJAFItem itemWithSKU:[NSString stringWithFormat:@"%@:%@",
+                               [vote objectForKey:@"candidate"],
+                               [vote objectForKey:@"rank"]]];
+        //NSLog(@"%@", item);
+        [voteItems addObject:item];
+    }
+    
+    NSString * voter = [[NSUserDefaults standardUserDefaults] stringForKey:@"Voter"];
+    [CJAF reportInAppEvent:@"voteEvent"
+               withOrderId:[NSString stringWithFormat:@"%@:%@", _electionName, voter]
+              withSaleInfo:[CJAFSaleInfo itemizedSale:voteItems]];
 }
 
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString* ) indentifier sender:(id)sender {

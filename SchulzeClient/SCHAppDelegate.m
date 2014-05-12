@@ -1,24 +1,17 @@
-//
-//  SCHAppDelegate.m
-//  SchulzeClient
-//
-//  Created by Team NaN on 5/2/14.
-//  Copyright (c) 2014 Commission Junction. All rights reserved.
-//
-
+#import "CJAffiliate.h"
 #import "SCHAppDelegate.h"
 
 @implementation SCHAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
-    
     NSDictionary *appDefaults = [NSDictionary dictionaryWithObjectsAndKeys:
                                  @"", @"Server",
                                  @"", @"Voter",
                                  nil];
     [[NSUserDefaults standardUserDefaults] registerDefaults:appDefaults];
+
+    [CJAF appStarted];
     
     return YES;
 }
