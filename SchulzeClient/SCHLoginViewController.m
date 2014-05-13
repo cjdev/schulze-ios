@@ -5,6 +5,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *serverTextField;
 @property (weak, nonatomic) IBOutlet UITextField *voterTextField;
 
+@property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
+
 @end
 
 @implementation SCHLoginViewController
@@ -24,6 +26,14 @@
     // Do any additional setup after loading the view.
     self.serverTextField.text = [[NSUserDefaults standardUserDefaults] stringForKey:@"Server"];
     self.voterTextField.text = [[NSUserDefaults standardUserDefaults] stringForKey:@"Voter"];
+
+    NSArray* icons = [[[[[NSBundle mainBundle] infoDictionary]
+                        objectForKey:@"CFBundleIcons"]
+                       objectForKey:@"CFBundlePrimaryIcon"]
+                      objectForKey:@"CFBundleIconFiles"];
+    UIImage *appIcon = [UIImage imageNamed: [icons objectAtIndex:[icons count] - 1]];
+    
+    self.logoImageView.image = appIcon;
 }
 
 - (void)didReceiveMemoryWarning
