@@ -29,10 +29,10 @@
     // update the text field tag to the row number
     UITextField *txtField = (UITextField*)[cell viewWithTag:1];
     txtField.tag = indexPath.row;
-    
-    NSString * rank = [_candidateVotes valueForKey:candidate];
-    if ([_candidateVotes valueForKey:candidate] != [NSNull null]) {
-        txtField.text = [NSString stringWithFormat:@"%@", rank];
+
+    NSNumber * rankInt = [NSNumber numberWithInt:[[[_candidateVotes valueForKey:candidate] valueForKey:@"rank"] integerValue]];
+    if (![rankInt  isEqual: @0]) {
+        txtField.text = [NSString stringWithFormat:@"%@", rankInt];
     }
     
     return cell;
@@ -101,9 +101,8 @@
     
     [_candidateVotes removeAllObjects];
     for (NSDictionary * item in jsonArray) {
-        // if there is no vote, store a 0 in the dict; nulls cannot be stored in the dict
-        NSNumber * rank = [item valueForKey:@"rank"];
-        [_candidateVotes setObject:((rank == nil) ? [NSNull null] : rank) forKey:[item valueForKey:@"candidate"]];
+
+        [_candidateVotes setObject:item forKey:[item valueForKey:@"candidate"]];
         [_candidates addObject:[item valueForKey:@"candidate"]];
     }
 }
@@ -145,10 +144,13 @@
     NSString * candidate = _candidates[textField.tag];
     NSString * vote = textField.text;
     NSNumber * rank = [self parseVote:vote];
-    //NSLog(@"  end editing %ld, candidate %@ / (parsed) rank %@", (long)textField.tag, candidate, rank);
+    NSLog(@"  end editing %ld, candidate %@ / (parsed) rank %@", (long)textField.tag, candidate, rank);
 
+    
     // cannot store a nil in the dictionary
-    [_candidateVotes setObject: (!rank) ? [NSNull null] : rank forKey:candidate];
+    NSMutableDictionary * candidateValues = [_candidateVotes valueForKey:candidate];
+    [candidateValues setObject: (!rank) ? [NSNull null] : rank forKey:@"rank"];
+    [_candidateVotes setObject: candidateValues forKey:candidate];
     textField.text = [NSString stringWithFormat:@"%@", (!rank)?@"":rank];
     [self.view endEditing:YES];
 }
@@ -161,12 +163,10 @@
 -(NSArray*) buildVotesJSONStructure {
     NSMutableArray * transformedVotes = [[NSMutableArray alloc] initWithCapacity:[_candidateVotes count]];
     for (id candidate in _candidateVotes) {
-        //NSLog(@"candidate: %@ rank: %@", candidate, [_candidateVotes objectForKey:candidate]);
+        //NSLog(@"candidate: %@ rank: %@", candidate, [[_candidateVotes objectForKey:candidate] valueForKey:@"rank"]);
         
-        NSString * rank = [_candidateVotes objectForKey:candidate];
-        
-        //convert nulls to empty strings
-        if (![_candidateVotes objectForKey:candidate]) {
+        NSString * rank = [[_candidateVotes objectForKey:candidate] valueForKey:@"rank"];
+        if ([rank isEqual:@"0"]) {
             rank = @"";
         }
         
@@ -175,7 +175,7 @@
                                    rank, @"rank",nil];
         [transformedVotes addObject:voteDict];
     }
-    //NSLog(@"%@", transformedVotes);
+    NSLog(@"%@", transformedVotes);
     return transformedVotes;
 
 }
@@ -199,7 +199,7 @@
     [NSURLConnection sendSynchronousRequest:request
                           returningResponse:&response error:&errors];
     if (errors != nil) {
-        //NSLog(@"%@", [errors localizedDescription]);
+        NSLog(@"%@", [errors localizedDescription]);
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
                                                         message:@"Cannot reach server."
                                                        delegate:self

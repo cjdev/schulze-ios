@@ -6,7 +6,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     NSDictionary *appDefaults = [NSDictionary dictionaryWithObjectsAndKeys:
-                                 @"", @"Server",
+                                 @"http://www.votecastomatic.com", @"Server",
                                  @"", @"Voter",
                                  nil];
     [[NSUserDefaults standardUserDefaults] registerDefaults:appDefaults];
