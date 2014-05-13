@@ -93,20 +93,19 @@
     
     NSError * err = nil;
     NSArray * jsonArray = [NSJSONSerialization JSONObjectWithData:result options:NSJSONReadingMutableContainers error:&err];
-
+    
     if (!_candidateVotes) {
         _candidateVotes = [[NSMutableDictionary alloc] initWithCapacity:[jsonArray count]];
     }
+    _candidates = [[NSMutableArray alloc] initWithCapacity:[jsonArray count]];
     
     [_candidateVotes removeAllObjects];
     for (NSDictionary * item in jsonArray) {
         // if there is no vote, store a 0 in the dict; nulls cannot be stored in the dict
         NSNumber * rank = [item valueForKey:@"rank"];
         [_candidateVotes setObject:((rank == nil) ? [NSNull null] : rank) forKey:[item valueForKey:@"candidate"]];
+        [_candidates addObject:[item valueForKey:@"candidate"]];
     }
-    
-    // clobber any existing array with new candidate list
-    _candidates = [[NSMutableArray alloc] initWithArray:[_candidateVotes allKeys]];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
