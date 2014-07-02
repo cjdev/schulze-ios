@@ -1,6 +1,6 @@
 // CJAffiliate.h
 //
-// SDK Version:      2.0.0_106_b34ee22
+// SDK Version:      2.0.0_DEV_7d3f648
 // More Information: http://developer.cj.com
 
 #import <Foundation/Foundation.h>
@@ -115,6 +115,9 @@
  */
 @interface CJAFSaleInfo : NSObject
 
+@property (readonly) NSDecimalNumber * amountDiscounted;
+@property (readonly) NSString * currency;
+
 /**
  * @name Creating a CJAFSaleInfo for an itemized sale
  */
@@ -204,6 +207,29 @@
 - (NSDictionary * ) toParameterDictionary;
 @end
 
+
+
+@interface CJAFBasicSaleInfo: CJAFSaleInfo
+
+@property (readonly) NSDecimalNumber * totalAmount;
+
+- (id) initWithTotalAmount:(NSDecimalNumber *) _totalAmount
+      withAmountDiscounted:(NSDecimalNumber *) _amountDiscounted
+              withCurrency: (NSString *) _currency;
+
+@end
+
+
+@interface CJAFItemizedSaleInfo : CJAFSaleInfo
+
+@property (readonly) NSArray * items;
+
+- (id) initWithItems:(NSArray *) items
+withAmountDiscounted:(NSDecimalNumber *) amountDiscounted
+        withCurrency: (NSString *) currency;
+
+@end
+
 /**
  `CJAFItemDetails` encapsulates optional details about a sale item.
  */
@@ -285,13 +311,14 @@
 
 @end
 
-@protocol CJAFDebugLog
-- (void) log:(NSString *) message;
+@protocol CJAFLog
+- (void) debug:(NSString *) message;
+- (void) info:(NSString *) message;
 @end
 
 @interface CJAFConfig : NSObject
 + (NSString *) mobileTrackingServerBaseUrl;
-+ (NSObject<CJAFDebugLog> *) logger;
++ (NSObject<CJAFLog> *) logger;
 + (void) setMobileTrackingServerBaseUrl:(NSString *) url;
-+ (void) setLogger:(NSObject<CJAFDebugLog> *) logger;
++ (void) setLogger:(NSObject<CJAFLog> *) logger;
 @end

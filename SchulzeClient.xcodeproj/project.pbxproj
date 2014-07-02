@@ -25,7 +25,7 @@
 		3914919F1914402A00B260E7 /* SCHLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3914919E1914402A00B260E7 /* SCHLoginViewController.m */; };
 		392192A6191AEB1D0052EB8B /* SCHTallyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 392192A5191AEB1D0052EB8B /* SCHTallyViewController.m */; };
 		3926394119212636008AE5D6 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3926394019212636008AE5D6 /* AdSupport.framework */; };
-		39263947192127F4008AE5D6 /* libcj.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39263946192127F4008AE5D6 /* libcj.a */; };
+		392B2611195E139100BE7298 /* libcj.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 392B2610195E139100BE7298 /* libcj.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,8 +65,8 @@
 		392192A4191AEB1D0052EB8B /* SCHTallyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCHTallyViewController.h; sourceTree = "<group>"; };
 		392192A5191AEB1D0052EB8B /* SCHTallyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCHTallyViewController.m; sourceTree = "<group>"; };
 		3926394019212636008AE5D6 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
-		39263945192127F4008AE5D6 /* CJAffiliate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJAffiliate.h; sourceTree = "<group>"; };
-		39263946192127F4008AE5D6 /* libcj.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcj.a; sourceTree = "<group>"; };
+		392B260F195E139100BE7298 /* CJAffiliate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJAffiliate.h; sourceTree = "<group>"; };
+		392B2610195E139100BE7298 /* libcj.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcj.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,7 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				39263947192127F4008AE5D6 /* libcj.a in Frameworks */,
+				392B2611195E139100BE7298 /* libcj.a in Frameworks */,
 				3926394119212636008AE5D6 /* AdSupport.framework in Frameworks */,
 				3914916819143C5300B260E7 /* CoreGraphics.framework in Frameworks */,
 				3914916A19143C5300B260E7 /* UIKit.framework in Frameworks */,
@@ -149,8 +149,8 @@
 		3914916C19143C5300B260E7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				39263945192127F4008AE5D6 /* CJAffiliate.h */,
-				39263946192127F4008AE5D6 /* libcj.a */,
+				392B260F195E139100BE7298 /* CJAffiliate.h */,
+				392B2610195E139100BE7298 /* libcj.a */,
 				3914916D19143C5300B260E7 /* SchulzeClient-Info.plist */,
 				3914916E19143C5300B260E7 /* InfoPlist.strings */,
 				3914917119143C5300B260E7 /* main.m */,
@@ -225,6 +225,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Commission Junction";
 				TargetAttributes = {
+					3914916119143C5300B260E7 = {
+						DevelopmentTeam = 354HR28725;
+					};
 					3914918519143C5300B260E7 = {
 						TestTargetID = 3914916119143C5300B260E7;
 					};
@@ -420,6 +423,7 @@
 					"$(PROJECT_DIR)/SchulzeClient",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -440,6 +444,7 @@
 					"$(PROJECT_DIR)/SchulzeClient",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
