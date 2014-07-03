@@ -25,7 +25,8 @@
 		3914919F1914402A00B260E7 /* SCHLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3914919E1914402A00B260E7 /* SCHLoginViewController.m */; };
 		392192A6191AEB1D0052EB8B /* SCHTallyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 392192A5191AEB1D0052EB8B /* SCHTallyViewController.m */; };
 		3926394119212636008AE5D6 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3926394019212636008AE5D6 /* AdSupport.framework */; };
-		392B2611195E139100BE7298 /* libcj.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 392B2610195E139100BE7298 /* libcj.a */; };
+		39B90D201965DFC5006A5C3F /* SCHAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39B90D1F1965DFC5006A5C3F /* SCHAboutViewController.m */; };
+		39B90D23196607D8006A5C3F /* libcj.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39B90D22196607D8006A5C3F /* libcj.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,8 +66,11 @@
 		392192A4191AEB1D0052EB8B /* SCHTallyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCHTallyViewController.h; sourceTree = "<group>"; };
 		392192A5191AEB1D0052EB8B /* SCHTallyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCHTallyViewController.m; sourceTree = "<group>"; };
 		3926394019212636008AE5D6 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
-		392B260F195E139100BE7298 /* CJAffiliate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJAffiliate.h; sourceTree = "<group>"; };
-		392B2610195E139100BE7298 /* libcj.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcj.a; sourceTree = "<group>"; };
+		39B90D1E1965DFC5006A5C3F /* SCHAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCHAboutViewController.h; sourceTree = "<group>"; };
+		39B90D1F1965DFC5006A5C3F /* SCHAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCHAboutViewController.m; sourceTree = "<group>"; };
+		39B90D211965E2F9006A5C3F /* CJAFInternals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJAFInternals.h; sourceTree = "<group>"; };
+		39B90D22196607D8006A5C3F /* libcj.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcj.a; sourceTree = "<group>"; };
+		39B90D24196607E1006A5C3F /* CJAffiliate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJAffiliate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,7 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				392B2611195E139100BE7298 /* libcj.a in Frameworks */,
+				39B90D23196607D8006A5C3F /* libcj.a in Frameworks */,
 				3926394119212636008AE5D6 /* AdSupport.framework in Frameworks */,
 				3914916819143C5300B260E7 /* CoreGraphics.framework in Frameworks */,
 				3914916A19143C5300B260E7 /* UIKit.framework in Frameworks */,
@@ -132,6 +136,8 @@
 				3914917419143C5300B260E7 /* SCHAppDelegate.h */,
 				3914917519143C5300B260E7 /* SCHAppDelegate.m */,
 				3914917719143C5300B260E7 /* Main.storyboard */,
+				39B90D1E1965DFC5006A5C3F /* SCHAboutViewController.h */,
+				39B90D1F1965DFC5006A5C3F /* SCHAboutViewController.m */,
 				3914919D1914402A00B260E7 /* SCHLoginViewController.h */,
 				3914919E1914402A00B260E7 /* SCHLoginViewController.m */,
 				3914917A19143C5300B260E7 /* SCHMasterViewController.h */,
@@ -149,8 +155,9 @@
 		3914916C19143C5300B260E7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				392B260F195E139100BE7298 /* CJAffiliate.h */,
-				392B2610195E139100BE7298 /* libcj.a */,
+				39B90D24196607E1006A5C3F /* CJAffiliate.h */,
+				39B90D22196607D8006A5C3F /* libcj.a */,
+				39B90D211965E2F9006A5C3F /* CJAFInternals.h */,
 				3914916D19143C5300B260E7 /* SchulzeClient-Info.plist */,
 				3914916E19143C5300B260E7 /* InfoPlist.strings */,
 				3914917119143C5300B260E7 /* main.m */,
@@ -280,6 +287,7 @@
 			files = (
 				3914917F19143C5300B260E7 /* SCHDetailViewController.m in Sources */,
 				3914919F1914402A00B260E7 /* SCHLoginViewController.m in Sources */,
+				39B90D201965DFC5006A5C3F /* SCHAboutViewController.m in Sources */,
 				392192A6191AEB1D0052EB8B /* SCHTallyViewController.m in Sources */,
 				3914917219143C5300B260E7 /* main.m in Sources */,
 				3914917619143C5300B260E7 /* SCHAppDelegate.m in Sources */,

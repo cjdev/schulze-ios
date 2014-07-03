@@ -1,6 +1,6 @@
 // CJAffiliate.h
 //
-// SDK Version:      2.0.0_DEV_7d3f648
+// SDK Version:      2.0.0_136_7d3f648
 // More Information: http://developer.cj.com
 
 #import <Foundation/Foundation.h>
